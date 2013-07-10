@@ -78,12 +78,13 @@
         var $meetingID =  $("#meetingID").val() ;
 				var $configXml = encodeURIComponent( $("#configXML").val() );
 
-        console.log($meetingID + $configXml + $salt);
+				var baseString = "setConfigXML" + "configXML=" + $configXml + "&meetingID=" + $meetingID + $salt;
+        console.log(baseString);
         
-        var $checksum= $.sha1( $meetingID + $configXml + $salt);
+        var $checksum= $.sha1(baseString);
 //        console.debug("meetingID: [" + $meetingID + "]");
-        console.debug("configXML: [" + $configXml + "]");
-//        console.debug("checksum: [" + $checksum + "]");
+//        console.debug("configXML: [" + $configXml + "]");
+        console.debug("checksum: [" + $checksum + "]");
         var params = {}
         params.meetingID = $meetingID;
         params.configXML = $configXml;
